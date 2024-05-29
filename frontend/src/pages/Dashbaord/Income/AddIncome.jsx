@@ -29,7 +29,7 @@ const AddIncome = () => {
         }
       )
       .then((res) => {
-        toast.success(res.data.message, { position: "top-right" });
+        toast.success(res?.data?.message, { position: "top-right" });
         setIncomedata({
           name:"",
           amount:"",

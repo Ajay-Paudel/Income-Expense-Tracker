@@ -9,17 +9,17 @@ const AllIncome = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_KEY}income/getallincome`, {
+      .get(`${process.env.REACT_APP_API_KEY}/income/getallincome`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
-        toast.success(res.data.message, { position: "top-right" });
+        toast.success(res?.data?.message, { position: "top-right" });
         setAllIncome(res.data.income);
       })
       .catch((err) => {
-        toast.error(err.data.message, { position: "top-right" });
+        toast.error(err?.data?.message, { position: "top-right" });
       });
   }, []);
   return (

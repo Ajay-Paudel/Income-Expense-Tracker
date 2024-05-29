@@ -27,9 +27,10 @@ exports.addincome = async (req, res, next) => {
 
 exports.getallincome = async (req, res, next) => {
     try {
+        const userId = req.userData.userId;
+        console.log(userId);
         const isUserExist = await userSchema.findOne({ _id: userId })
         if (!isUserExist) return res.status(400).json({ status: false, message: "User Doesn't Exists" })
-        const userId = req.userData.userId;
         const income = await incomeSchema.find({ userId: userId })
         res.status(200).json({
             status: true,
